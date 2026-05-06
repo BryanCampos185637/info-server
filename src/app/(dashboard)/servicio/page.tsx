@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Container,
   Grid,
   Typography,
@@ -11,34 +10,16 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Chip,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import { ButtonLink } from "@/components";
+import FilterDramaIcon from "@mui/icons-material/FilterDrama";
+import InfoIcon from "@mui/icons-material/Info";
 
-const dataTemporal = [
-  {
-    id: 1,
-    servicio: "Nombre del servicio",
-    ambiente: "Productivo",
-    url: "http://localhost:8080",
-  },
-  {
-    id: 2,
-    servicio: "Nombre del servicio",
-    ambiente: "Desarrollo",
-    url: "http://localhost:8080",
-  },
-  {
-    id: 3,
-    servicio: "Nombre del servicio",
-    ambiente: "QA",
-    url: "http://localhost:8080",
-  },
-];
+import { ButtonLink, ChipEnv } from "@/components";
+import { serviciosSeed } from "@/utils/seed";
 
-const page = () => {
+export default function ServicesPage() {
   return (
     <Container>
       <Grid container spacing={1}>
@@ -70,29 +51,46 @@ const page = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>SERVICIO</TableCell>
+                  <TableCell>SERVICIO / CONTENEDOR</TableCell>
                   <TableCell>AMBIENTE</TableCell>
                   <TableCell>URL</TableCell>
                   <TableCell>ACCIONES</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {dataTemporal.map((item) => (
+                {serviciosSeed.map((item) => (
                   <TableRow key={item.id}>
-                    <TableCell>{item.servicio}</TableCell>
                     <TableCell>
-                      {item.ambiente === "Productivo" && (
-                        <Chip label={item.ambiente} color="success" />
-                      )}
-                      {item.ambiente === "Desarrollo" && (
-                        <Chip label={item.ambiente} color="info" />
-                      )}
-                      {item.ambiente === "QA" && (
-                        <Chip label={item.ambiente} color="warning" />
-                      )}
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                            width: 32,
+                            height: 32,
+                            borderRadius: 1,
+                            backgroundColor: "#95baffff",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <FilterDramaIcon />
+                        </Box>
+                        {item.nombre}
+                      </Box>
+                    </TableCell>
+                    <TableCell>
+                      <ChipEnv ambiente={item.ambiente} />
                     </TableCell>
                     <TableCell>{item.url}</TableCell>
                     <TableCell>
+                      <ButtonLink
+                        href={`/servicio/${item.id}`}
+                        label={<InfoIcon />}
+                        variant="text"
+                      />
                       <ButtonLink
                         href={`/servicio/formulario/${item.id}`}
                         label={<EditIcon />}
@@ -108,6 +106,4 @@ const page = () => {
       </Grid>
     </Container>
   );
-};
-
-export default page;
+}

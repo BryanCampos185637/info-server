@@ -1,5 +1,12 @@
-export const ENVIRONMENTS = [
-  { label: "Producción", value: "prod" },
-  { label: "QA", value: "qa" },
-  { label: "Desarrollo", value: "dev" },
-] as const;
+import type { TipoAmbiente } from "@/interfaces";
+
+interface Environments {
+  label: string;
+  value: TipoAmbiente;
+}
+
+export const ENVIRONMENTS: Environments[] = [
+  { label: "Producción", value: "PRD" },
+  { label: "QA", value: "QA" },
+  { label: "Desarrollo", value: "DEV" },
+];

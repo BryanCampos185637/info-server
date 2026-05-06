@@ -1,0 +1,156 @@
+import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Divider,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  SxProps,
+  Theme,
+  Typography,
+} from "@mui/material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import NotesIcon from "@mui/icons-material/Notes";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
+import PolylineIcon from "@mui/icons-material/Polyline";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import { serviciosSeed } from "@/utils/seed";
+import { ButtonLink, TituloDetalle } from "@/components";
+
+const styleBox: SxProps<Theme> = { p: 2, border: "1px dashed grey" };
+
+export default async function ServiceDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  const service = serviciosSeed.find((item) => item.id === id);
+
+  return (
+    <Container>
+      <Grid container spacing={2}>
+        <Grid size={12}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <TituloDetalle
+              nombre={service?.nombre || ""}
+              ambiente={service?.ambiente || ""}
+            />
+            <ButtonLink
+              variant="outlined"
+              href="/servicio"
+              icon={<ArrowBackIcon />}
+              label="Regresar"
+            />
+          </Box>
+        </Grid>
+        <Grid size={8}>
+          <Card>
+            <CardContent>
+              <Typography
+                variant="h6"
+                sx={{ display: "flex", gap: 1, alignItems: "center" }}
+              >
+                <InfoOutlinedIcon /> Descripción General
+              </Typography>
+              <Typography variant="body1">{service?.descripcion}</Typography>
+
+              <Divider sx={{ my: 2 }} />
+
+              <Grid container spacing={2}>
+                <Grid size={12}>
+                  <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                    URL del servicio / contenedor
+                  </Typography>
+                  <Box
+                    component="section"
+                    sx={{
+                      ...styleBox,
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Typography variant="body2">{service?.url}</Typography>
+                    <IconButton>
+                      <InsertLinkIcon />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+          <Card sx={{ mt: 2 }}>
+            <CardContent>
+              <Typography
+                variant="h6"
+                sx={{ display: "flex", gap: 1, alignItems: "center" }}
+              >
+                <EditNoteIcon />
+                Notas
+              </Typography>
+
+              <Box
+                component="section"
+                sx={{
+                  ...styleBox,
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: 1,
+                }}
+              >
+                <NotesIcon />
+                <Typography variant="body2">
+                  {service?.notas ?? "No hay notas"}
+                </Typography>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid size={4}>
+          <Card>
+            <CardContent>
+              <Typography
+                variant="h6"
+                sx={{ display: "flex", gap: 1, alignItems: "center" }}
+              >
+                <PolylineIcon />
+                Servicios que consume {service?.nombre}
+              </Typography>
+
+              <List
+                sx={{
+                  width: "100%",
+                  maxWidth: 360,
+                  bgcolor: "background.paper",
+                  position: "relative",
+                  overflow: "auto",
+                  maxHeight: 300,
+                  "& ul": { padding: 0 },
+                }}
+              >
+                {serviciosSeed.map((item) => (
+                  <ListItem key={item.id}>
+                    <ListItemText>{item.nombre}</ListItemText>
+                  </ListItem>
+                ))}
+              </List>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Container>
+  );
+}
