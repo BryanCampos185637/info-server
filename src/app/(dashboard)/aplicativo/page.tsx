@@ -1,4 +1,6 @@
+import { Metadata } from "next";
 import {
+  Box,
   Container,
   Grid,
   Paper,
@@ -10,21 +12,43 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import LaptopIcon from "@mui/icons-material/Laptop";
 
 import { ButtonLink, ChipEnv, LabelWithIcon } from "@/components";
 import { aplicacionesSeed } from "@/utils/seed";
 
-const page = () => {
+export const metadata: Metadata = {
+  title: "InfoServer | Aplicativos",
+  description: "Listado de aplicativos por ambiente",
+};
+
+export default function ApplicationsPage() {
   return (
     <Container>
       <Grid container spacing={2}>
         <Grid size={12}>
-          <Typography variant="h5" component="h1">
-            Aplicativos
-            <Typography variant="body1">Listado de aplicativos</Typography>
-          </Typography>
+          <Box
+            sx={{
+              width: "100%",
+              height: "auto",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+            }}
+          >
+            <Typography variant="h5" component="h1">
+              Aplicativos
+              <Typography variant="body1">Listado de aplicativos</Typography>
+            </Typography>
+
+            <ButtonLink
+              href="/aplicativo/formulario"
+              icon={<AddIcon />}
+              label="Agregar aplicativo"
+            />
+          </Box>
         </Grid>
 
         <Grid size={12}>
@@ -67,6 +91,4 @@ const page = () => {
       </Grid>
     </Container>
   );
-};
-
-export default page;
+}

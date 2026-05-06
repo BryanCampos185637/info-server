@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import Image from "next/image";
 import {
   AppBar,
   Box,
@@ -12,7 +13,6 @@ import {
   Tooltip,
   MenuItem,
 } from "@mui/material";
-import TapAndPlayIcon from "@mui/icons-material/TapAndPlay";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -36,7 +36,13 @@ function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <TapAndPlayIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <Image
+            src="/cloud-icon.svg"
+            alt="Logo"
+            width={24}
+            height={24}
+            style={{ marginRight: "1rem" }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -53,8 +59,6 @@ function ResponsiveAppBar() {
           >
             InfoServer
           </Typography>
-
-          <TapAndPlayIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap

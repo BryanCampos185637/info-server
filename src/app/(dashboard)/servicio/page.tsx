@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import {
   Box,
   Container,
@@ -18,6 +19,11 @@ import InfoIcon from "@mui/icons-material/Info";
 
 import { ButtonLink, ChipEnv, LabelWithIcon } from "@/components";
 import { serviciosSeed } from "@/utils/seed";
+
+export const metadata: Metadata = {
+  title: "InfoServer | Servicios",
+  description: "Listado de servicios por ambiente",
+};
 
 export default function ServicesPage() {
   return (
@@ -41,7 +47,7 @@ export default function ServicesPage() {
             <ButtonLink
               href="/servicio/formulario"
               icon={<AddIcon />}
-              label="Agregar nuevo servicio"
+              label="Agregar servicio"
             />
           </Box>
         </Grid>

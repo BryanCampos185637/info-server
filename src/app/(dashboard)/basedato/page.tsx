@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { Container, Typography } from "@mui/material";
 
-const page = () => {
+export const metadata: Metadata = {
+  title: "InfoServer | Base de datos",
+  description: "Listado de bases de datos por ambiente",
+};
+
+export default function DatabasesPage() {
   return (
     <Container>
       <Typography variant="h5" component="h1">
@@ -9,6 +15,4 @@ const page = () => {
       </Typography>
     </Container>
   );
-};
-
-export default page;
+}
