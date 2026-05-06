@@ -16,7 +16,7 @@ export default async function page({
             Formulario de modificación de Servicios
           </Typography>
         </Grid>
-        <Grid size={12}>
+        <Grid size={{ sm: 12, md: 8 }}>
           <FormularioServicio id={id} onSave={() => {}} />
         </Grid>
       </Grid>

@@ -21,7 +21,7 @@ const page = () => {
     <Container>
       <Grid container spacing={2}>
         <Grid size={12}>
-          <Typography variant="h4">
+          <Typography variant="h5" component="h1">
             Aplicativos
             <Typography variant="body1">Listado de aplicativos</Typography>
           </Typography>

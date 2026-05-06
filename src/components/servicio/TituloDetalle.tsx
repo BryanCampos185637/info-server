@@ -19,7 +19,9 @@ export default function TituloDetalle({
         alignItems: "center",
       }}
     >
-      <Typography variant="h4">{nombre}</Typography>
+      <Typography variant="h5" component="h1">
+        {nombre}
+      </Typography>
       <ChipEnv ambiente={ambiente} />
     </Box>
   );

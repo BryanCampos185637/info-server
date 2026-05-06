@@ -33,7 +33,7 @@ export default function ServicesPage() {
               alignItems: "flex-end",
             }}
           >
-            <Typography variant="h4">
+            <Typography variant="h5" component="h1">
               Registro de Servicios
               <Typography variant="body1">Listado de servicios</Typography>
             </Typography>

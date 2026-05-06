@@ -8,3 +8,4 @@ export { default as TituloDetalle } from "./servicio/TituloDetalle";
 export { default as ListaServicios } from "./servicio/ListaServicios";
 export { default as LabelWithIcon } from "./ui/LabelWithIcon";
 export { default as Loading } from "./ui/Loading";
+export { default as FormularioAplicativo } from "./aplicativo/FormularioAplicativo";

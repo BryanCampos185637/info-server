@@ -52,8 +52,10 @@ export default async function ServiceDetailPage({
           <Card>
             <CardContent>
               <Typography
+                component="h1"
                 variant="h6"
                 sx={{ display: "flex", gap: 1, alignItems: "center" }}
+                color="primary"
               >
                 <InfoOutlinedIcon /> Descripción General
               </Typography>
@@ -63,7 +65,11 @@ export default async function ServiceDetailPage({
 
               <Grid container spacing={2}>
                 <Grid size={12}>
-                  <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ fontWeight: "bold" }}
+                    color="primary"
+                  >
                     URL del servicio / contenedor
                   </Typography>
                   <Box
@@ -90,6 +96,7 @@ export default async function ServiceDetailPage({
               <Typography
                 variant="h6"
                 sx={{ display: "flex", gap: 1, alignItems: "center" }}
+                color="primary"
               >
                 <EditNoteIcon />
                 Notas
@@ -119,6 +126,7 @@ export default async function ServiceDetailPage({
               <Typography
                 variant="h6"
                 sx={{ display: "flex", gap: 1, alignItems: "center" }}
+                color="primary"
               >
                 <PolylineIcon />
                 Servicios que consume
