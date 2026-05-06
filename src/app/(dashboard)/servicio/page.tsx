@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
+import { ButtonLink } from "@/components";
 
 const dataTemporal = [
   {
@@ -56,9 +57,11 @@ const page = () => {
               <Typography variant="body1">Listado de servicios</Typography>
             </Typography>
 
-            <Button startIcon={<AddIcon />} variant="contained">
-              Agregar nuevo servicio
-            </Button>
+            <ButtonLink
+              href="/servicio/formulario"
+              icon={<AddIcon />}
+              label="Agregar nuevo servicio"
+            />
           </Box>
         </Grid>
 
@@ -90,9 +93,11 @@ const page = () => {
                     </TableCell>
                     <TableCell>{item.url}</TableCell>
                     <TableCell>
-                      <Button variant="text">
-                        <EditIcon />
-                      </Button>
+                      <ButtonLink
+                        href={`/servicio/formulario/${item.id}`}
+                        label={<EditIcon />}
+                        variant="text"
+                      />
                     </TableCell>
                   </TableRow>
                 ))}
