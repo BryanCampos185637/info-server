@@ -16,7 +16,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import FilterDramaIcon from "@mui/icons-material/FilterDrama";
 import InfoIcon from "@mui/icons-material/Info";
 
-import { ButtonLink, ChipEnv } from "@/components";
+import { ButtonLink, ChipEnv, LabelWithIcon } from "@/components";
 import { serviciosSeed } from "@/utils/seed";
 
 export default function ServicesPage() {
@@ -61,25 +61,10 @@ export default function ServicesPage() {
                 {serviciosSeed.map((item) => (
                   <TableRow key={item.id}>
                     <TableCell>
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                      >
-                        <Box
-                          sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 1,
-                            width: 32,
-                            height: 32,
-                            borderRadius: 1,
-                            backgroundColor: "#95baffff",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <FilterDramaIcon />
-                        </Box>
-                        {item.nombre}
-                      </Box>
+                      <LabelWithIcon
+                        icon={<FilterDramaIcon />}
+                        label={item.nombre}
+                      />
                     </TableCell>
                     <TableCell>
                       <ChipEnv ambiente={item.ambiente} />

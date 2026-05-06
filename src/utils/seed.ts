@@ -1,4 +1,4 @@
-import { Servicio } from "@/interfaces";
+import { Aplicacion, Servicio } from "@/interfaces";
 
 export const serviciosSeed: Servicio[] = [
   {
@@ -183,5 +183,26 @@ export const serviciosSeed: Servicio[] = [
     url: "https://sandbox.stg.com",
     ambiente: "QA",
     notas: "Reset de base de datos semanal.",
+  },
+];
+
+export const aplicacionesSeed: Aplicacion[] = [
+  {
+    id: "1",
+    nombre: "Mi Abank Digital",
+    version: "2.5.0-alpha",
+    ambiente: "DEV",
+  },
+  {
+    id: "2",
+    nombre: "Dashboard de Administración",
+    version: "1.2.0-beta",
+    ambiente: "QA",
+  },
+  {
+    id: "3",
+    nombre: "Portal de Clientes",
+    version: "3.0.0",
+    ambiente: "PRD",
   },
 ];

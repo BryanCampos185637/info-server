@@ -1,19 +1,11 @@
 import {
-  Badge,
   Box,
-  Button,
   Card,
   CardContent,
   Container,
   Divider,
   Grid,
   IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Paper,
   SxProps,
   Theme,
   Typography,
@@ -24,7 +16,6 @@ import NotesIcon from "@mui/icons-material/Notes";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import PolylineIcon from "@mui/icons-material/Polyline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 
 import { serviciosSeed } from "@/utils/seed";
 import { ButtonLink, ListaServicios, TituloDetalle } from "@/components";

@@ -13,6 +13,11 @@ const menuItems = [
     icon: <HomeIcon />,
   },
   {
+    label: "Aplicativos",
+    href: "/aplicativo",
+    icon: <LaptopIcon />,
+  },
+  {
     label: "Servicios",
     href: "/servicio",
     icon: <DnsIcon />,
@@ -21,11 +26,6 @@ const menuItems = [
     label: "Bases de datos",
     href: "/basedato",
     icon: <StorageIcon />,
-  },
-  {
-    label: "Aplicativos",
-    href: "/aplicativo",
-    icon: <LaptopIcon />,
   },
 ];
 
