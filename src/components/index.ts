@@ -5,3 +5,4 @@ export { default as ButtonLink } from "./ui/ButtonLink";
 export { default as FormularioServicio } from "./servicio/FormularioServicio";
 export { default as ChipEnv } from "./servicio/ChipEnv";
 export { default as TituloDetalle } from "./servicio/TituloDetalle";
+export { default as ListaServicios } from "./servicio/ListaServicios";

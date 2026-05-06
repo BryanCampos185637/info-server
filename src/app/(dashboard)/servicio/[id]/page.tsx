@@ -10,6 +10,8 @@ import {
   IconButton,
   List,
   ListItem,
+  ListItemButton,
+  ListItemIcon,
   ListItemText,
   Paper,
   SxProps,
@@ -22,9 +24,10 @@ import NotesIcon from "@mui/icons-material/Notes";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import PolylineIcon from "@mui/icons-material/Polyline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 
 import { serviciosSeed } from "@/utils/seed";
-import { ButtonLink, TituloDetalle } from "@/components";
+import { ButtonLink, ListaServicios, TituloDetalle } from "@/components";
 
 const styleBox: SxProps<Theme> = { p: 2, border: "1px dashed grey" };
 
@@ -127,26 +130,11 @@ export default async function ServiceDetailPage({
                 sx={{ display: "flex", gap: 1, alignItems: "center" }}
               >
                 <PolylineIcon />
-                Servicios que consume {service?.nombre}
+                Servicios que consume
               </Typography>
 
-              <List
-                sx={{
-                  width: "100%",
-                  maxWidth: 360,
-                  bgcolor: "background.paper",
-                  position: "relative",
-                  overflow: "auto",
-                  maxHeight: 300,
-                  "& ul": { padding: 0 },
-                }}
-              >
-                {serviciosSeed.map((item) => (
-                  <ListItem key={item.id}>
-                    <ListItemText>{item.nombre}</ListItemText>
-                  </ListItem>
-                ))}
-              </List>
+              <Divider />
+              <ListaServicios />
             </CardContent>
           </Card>
         </Grid>
