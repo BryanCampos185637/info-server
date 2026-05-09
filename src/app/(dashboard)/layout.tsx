@@ -10,8 +10,8 @@ export default function DashboardLayout({
   return (
     <Box sx={{ display: "flex" }}>
       <header>
-        <AppNavbar />
         <AppDrawer />
+        <AppNavbar />
       </header>
       <Box component="main" sx={{ flexGrow: 1, p: 1 }}>
         <Toolbar />
