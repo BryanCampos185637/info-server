@@ -18,14 +18,15 @@ import FilterDramaIcon from "@mui/icons-material/FilterDrama";
 import InfoIcon from "@mui/icons-material/Info";
 
 import { ButtonLink, ChipEnv, LabelWithIcon } from "@/components";
-import { serviciosSeed } from "@/utils/seed";
+import { ServicioService } from "@/services";
 
 export const metadata: Metadata = {
   title: "InfoServer | Servicios",
   description: "Listado de servicios por ambiente",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const servicios = await ServicioService.getServicios();
   return (
     <Container>
       <Grid container spacing={1}>
@@ -64,32 +65,40 @@ export default function ServicesPage() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {serviciosSeed.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell>
-                      <LabelWithIcon
-                        icon={<FilterDramaIcon />}
-                        label={item.nombre}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <ChipEnv ambiente={item.ambiente} />
-                    </TableCell>
-                    <TableCell>{item.url}</TableCell>
-                    <TableCell>
-                      <ButtonLink
-                        href={`/servicio/${item.id}`}
-                        label={<InfoIcon />}
-                        variant="text"
-                      />
-                      <ButtonLink
-                        href={`/servicio/formulario/${item.id}`}
-                        label={<EditIcon />}
-                        variant="text"
-                      />
+                {servicios.length > 0 ? (
+                  servicios.map((item) => (
+                    <TableRow key={item.id}>
+                      <TableCell>
+                        <LabelWithIcon
+                          icon={<FilterDramaIcon />}
+                          label={item.nombre}
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <ChipEnv ambiente={item.ambiente} />
+                      </TableCell>
+                      <TableCell>{item.url}</TableCell>
+                      <TableCell>
+                        <ButtonLink
+                          href={`/servicio/${item.id}`}
+                          label={<InfoIcon />}
+                          variant="text"
+                        />
+                        <ButtonLink
+                          href={`/servicio/formulario/${item.id}`}
+                          label={<EditIcon />}
+                          variant="text"
+                        />
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={4} align="center">
+                      No hay servicios registrados
                     </TableCell>
                   </TableRow>
-                ))}
+                )}
               </TableBody>
             </Table>
           </TableContainer>

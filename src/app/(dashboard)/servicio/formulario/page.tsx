@@ -1,18 +1,19 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Divider, Grid, Paper, Typography } from "@mui/material";
 
 import { FormularioServicio } from "@/components";
 
 export default function page() {
   return (
     <Container>
-      <Grid container spacing={1}>
+      <Grid container spacing={2} component={Paper} sx={{ p: 2 }}>
         <Grid size={12}>
           <Typography variant="h5" component="h1">
-            Formulario de creación de Servicios
+            Crear Servicios
           </Typography>
+          <Divider />
         </Grid>
-        <Grid size={{ sm: 12, md: 8 }}>
-          <FormularioServicio onSave={() => {}} />
+        <Grid size={12}>
+          <FormularioServicio />
         </Grid>
       </Grid>
     </Container>

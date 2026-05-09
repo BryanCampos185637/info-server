@@ -17,8 +17,8 @@ import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import PolylineIcon from "@mui/icons-material/Polyline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-import { serviciosSeed } from "@/utils/seed";
 import { ButtonLink, ListaServicios, TituloDetalle } from "@/components";
+import { ServicioService } from "@/services";
 
 const styleBox: SxProps<Theme> = { p: 2, border: "1px dashed grey" };
 
@@ -29,7 +29,9 @@ export default async function ServiceDetailPage({
 }) {
   const { id } = await params;
 
-  const service = serviciosSeed.find((item) => item.id === id);
+  const service = await ServicioService.getServicioById(+id);
+  //TODO: Temporalmente
+  const servicios = await ServicioService.getServicios();
 
   return (
     <Container>
@@ -133,7 +135,9 @@ export default async function ServiceDetailPage({
               </Typography>
 
               <Divider />
-              <ListaServicios />
+              <ListaServicios
+                servicios={servicios.filter((s) => s.id !== service.id)}
+              />
             </CardContent>
           </Card>
         </Grid>

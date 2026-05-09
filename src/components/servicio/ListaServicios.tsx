@@ -2,16 +2,19 @@
 import { useRouter } from "next/navigation";
 import {
   List,
-  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 
-import { serviciosSeed } from "@/utils/seed";
+import { Servicio } from "@/interfaces";
 
-export default function ListaServicios() {
+interface props {
+  servicios: Servicio[];
+}
+
+export default function ListaServicios({ servicios }: props) {
   const router = useRouter();
 
   return (
@@ -26,7 +29,7 @@ export default function ListaServicios() {
         "& ul": { padding: 0 },
       }}
     >
-      {serviciosSeed.map((item) => (
+      {servicios.map((item) => (
         <ListItemButton
           key={item.id}
           onClick={() => router.push(`/servicio/${item.id}`)}
