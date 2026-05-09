@@ -15,10 +15,17 @@ model Aplicacion {
 }
 
 model Servicio {
-  id          Int     @id @default(autoincrement())
-  nombre      String
-  descripcion String
-  url         String
-  ambiente    String
-  notas       String?
+  id            Int             @id @default(autoincrement())
+  nombre        String
+  descripcion   String
+  url           String
+  ambiente      String
+  notas         String?
+  Microservicio Microservicio[]
+}
+
+model Microservicio {
+  id          Int       @id @default(autoincrement())
+  id_servicio Int?
+  Servicio    Servicio? @relation(fields: [id_servicio], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "constraint_id_servicio")
 }
