@@ -17,14 +17,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import LaptopIcon from "@mui/icons-material/Laptop";
 
 import { ButtonLink, ChipEnv, LabelWithIcon } from "@/components";
-import { aplicacionesSeed } from "@/utils/seed";
+import { AplicacionService } from "@/services";
 
 export const metadata: Metadata = {
   title: "InfoServer | Aplicativos",
   description: "Listado de aplicativos por ambiente",
 };
 
-export default function ApplicationsPage() {
+export default async function ApplicationsPage() {
+  const aplicaciones = await AplicacionService.getAplicaciones();
+
   return (
     <Container>
       <Grid container spacing={2}>
@@ -57,13 +59,13 @@ export default function ApplicationsPage() {
               <TableHead>
                 <TableRow>
                   <TableCell>NOMBRE</TableCell>
-                  <TableCell>VERSION</TableCell>
                   <TableCell>ENTORNO</TableCell>
+                  <TableCell>VERSION</TableCell>
                   <TableCell>ACCIONES</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {aplicacionesSeed.map((item) => (
+                {aplicaciones.map((item) => (
                   <TableRow key={item.id}>
                     <TableCell>
                       <LabelWithIcon
@@ -71,10 +73,10 @@ export default function ApplicationsPage() {
                         label={item.nombre}
                       />
                     </TableCell>
-                    <TableCell>{item.version}</TableCell>
                     <TableCell>
                       <ChipEnv ambiente={item.ambiente} />
                     </TableCell>
+                    <TableCell>{item.version}</TableCell>
                     <TableCell>
                       <ButtonLink
                         href={`/aplicativo/formulario/${item.id}`}

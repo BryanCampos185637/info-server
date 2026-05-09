@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-import NotesIcon from "@mui/icons-material/Notes";
+import AddLinkIcon from "@mui/icons-material/AddLink";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import PolylineIcon from "@mui/icons-material/Polyline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -54,25 +54,26 @@ export default async function ServiceDetailPage({
           <Card>
             <CardContent>
               <Typography
-                component="h1"
                 variant="h6"
                 sx={{ display: "flex", gap: 1, alignItems: "center" }}
                 color="primary"
               >
                 <InfoOutlinedIcon /> Descripción General
               </Typography>
-              <Typography variant="body1">{service?.descripcion}</Typography>
+              <Box component="section" sx={styleBox}>
+                <Typography variant="body2">{service?.descripcion}</Typography>
+              </Box>
 
               <Divider sx={{ my: 2 }} />
 
               <Grid container spacing={2}>
                 <Grid size={12}>
                   <Typography
-                    variant="body1"
-                    sx={{ fontWeight: "bold" }}
+                    variant="h6"
+                    sx={{ display: "flex", gap: 1, alignItems: "center" }}
                     color="primary"
                   >
-                    URL del servicio / contenedor
+                    <AddLinkIcon /> URL del servicio / contenedor
                   </Typography>
                   <Box
                     component="section"
@@ -85,9 +86,9 @@ export default async function ServiceDetailPage({
                     }}
                   >
                     <Typography variant="body2">{service?.url}</Typography>
-                    <IconButton>
+                    <a href={service?.url} target="_blank">
                       <InsertLinkIcon />
-                    </IconButton>
+                    </a>
                   </Box>
                 </Grid>
               </Grid>
@@ -113,9 +114,10 @@ export default async function ServiceDetailPage({
                   gap: 1,
                 }}
               >
-                <NotesIcon />
                 <Typography variant="body2">
-                  {service?.notas ?? "No hay notas"}
+                  {service?.notas?.length === 0
+                    ? "No hay notas para este servicio"
+                    : service?.notas}
                 </Typography>
               </Box>
             </CardContent>
